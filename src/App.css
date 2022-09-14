@@ -1,0 +1,16 @@
+.grid_box {
+  display: grid;
+  grid-template-columns: repeat(2, max(50vw, 200px));
+  grid-template-rows: repeat(2, max(50vh, 200px));
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  border: 3px solid #73ad21;
+}
+
+.grid {
+  border: 1px solid black;
+}

@@ -1,7 +1,16 @@
-import { greet } from "./utils/greet";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'holderjs'
+import Task from "./components/Task";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <>
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+    </>
+  );
 }
 
 export default App;

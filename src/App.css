@@ -1,17 +1,18 @@
 #page_title{
-  margin: 10px 0px 20px 20px;
+  margin: 20px 0px 20px 30px;
+  position:fixed
 }
 .grid_box {
   display: grid;
-  grid-template-columns: 45vw 45vw;
-  grid-template-rows: 45vw 45vw;
+  grid-template-columns: repeat(2, min(45vw, 45vh));
+  grid-template-rows: repeat(2, min(45vw, 45vh));
 
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   top: 0;
-  margin: 100px 20px 100px 20px;
+  margin: 70px 20px 150px 20px;
   justify-content: center;
 }
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import addNewNote from "../../utils/addNewNote";
+import { UseStateManager } from "../../utils/useStateManager";
 
 const Button = styled.button<{ primary?: boolean }>`
   background: transparent;
@@ -21,6 +21,13 @@ const Button = styled.button<{ primary?: boolean }>`
 `;
 
 export default function NewNoteButton(): JSX.Element {
+  const { forgetAboutItItems, setForgetAboutItItems } = UseStateManager();
+
+  function addNewNote(): void {
+    const newItem = "hi";
+    setForgetAboutItItems([...forgetAboutItItems, newItem]);
+  }
+
   return (
     <Button primary={true} onClick={addNewNote}>
       New Note

@@ -1,5 +1,5 @@
 import NewNoteButton from "./NewNoteButton";
 
-export default function NewNote():JSX.Element{
-    return <NewNoteButton />
+export default function NewNote(): JSX.Element {
+  return <NewNoteButton />;
 }

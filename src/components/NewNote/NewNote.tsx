@@ -5,5 +5,9 @@ interface NewNoteProps {
 }
 
 export default function NewNote({forgetAboutItItemsManager} : NewNoteProps): JSX.Element {
-  return <NewNoteButton forgetAboutItItemsManager={forgetAboutItItemsManager}/>;
+  return (
+    <>
+      <NewNoteButton forgetAboutItItemsManager={forgetAboutItItemsManager}/>
+    </>
+  )
 }

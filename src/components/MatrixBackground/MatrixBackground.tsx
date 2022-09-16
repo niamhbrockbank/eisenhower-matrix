@@ -3,13 +3,17 @@ import DoFirst from "./DoFirst";
 import ForgetAboutIt from "./ForgetAboutIt";
 import Schedule from "./Schedule";
 
-export default function MatrixBackground(): JSX.Element {
+interface MatrixBackgroundProps {
+  forgetAboutItItemsManager : [string[], React.Dispatch<React.SetStateAction<string[]>>]
+}
+
+export default function MatrixBackground({forgetAboutItItemsManager}: MatrixBackgroundProps): JSX.Element {
   return (
     <div className="grid_box">
       <DoFirst />
       <Schedule />
       <Delegate />
-      <ForgetAboutIt />
+      <ForgetAboutIt forgetAboutItItemsManager={forgetAboutItItemsManager}/>
     </div>
   );
 }

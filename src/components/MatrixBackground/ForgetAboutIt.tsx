@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import generateKey from "../../utils/generateKey";
-import { UseStateManager } from "../../utils/useStateManager";
 
-export default function ForgetAboutIt(): JSX.Element {
-  const { forgetAboutItItems } = UseStateManager();
-  console.log(forgetAboutItItems)
+interface ForgetAboutItProps {
+  forgetAboutItItemsManager : [string[], React.Dispatch<React.SetStateAction<string[]>>]
+}
+
+export default function ForgetAboutIt({forgetAboutItItemsManager}: ForgetAboutItProps): JSX.Element {
+  const [forgetAboutItItems, setForgetAboutItItems] = forgetAboutItItemsManager
+
+  useEffect(() => {
+    console.log(`you have ${forgetAboutItItems.length} items`)
+  }, [setForgetAboutItItems, forgetAboutItItems])
 
   return (
     <div className="grid">

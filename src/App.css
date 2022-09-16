@@ -23,6 +23,7 @@
   color: white;
 }
 
-/* #forget_about_it {
-  list-style-type: none;
-} */
+.draggable_note{
+  position : absolute;
+  border : 1px solid red;
+}

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { enableDropping, handleDragStart, handleDrop } from "../../utils/dragNote";
 import generateKey from "../../utils/generateKey";
 
 interface ForgetAboutItProps {
@@ -18,7 +19,7 @@ export default function ForgetAboutIt({forgetAboutItItemsManager}: ForgetAboutIt
       <ul id="forget_about_it">
         <li>first item</li>
         {forgetAboutItItems.map((item) => (
-          <li key={generateKey(item)}>{item}</li>
+          <li key={generateKey(item)}><div draggable="true" onDragStart={handleDragStart}>{item}</div></li>
         ))}
       </ul>
     </div>

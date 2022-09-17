@@ -9,6 +9,7 @@ interface ForgetAboutItProps {
 const getItemStyle = (isDragging : boolean, draggableStyle : any) => ({
   padding : 10,
   margin : `0 50px 15px 50px`,
+  color : 'black',
   background: isDragging ? "blue" : "white",
 
   ...draggableStyle

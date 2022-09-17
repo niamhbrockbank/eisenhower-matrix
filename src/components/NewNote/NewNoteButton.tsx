@@ -19,13 +19,18 @@ const Button = styled.button<{ primary?: boolean }>`
     `}
 `;
 
-interface NewNoteButtonProps{
-  forgetAboutItItemsManager : [string[], React.Dispatch<React.SetStateAction<string[]>>]
+interface NewNoteButtonProps {
+  forgetAboutItItemsManager: [
+    string[],
+    React.Dispatch<React.SetStateAction<string[]>>
+  ];
 }
 
-export default function NewNoteButton({forgetAboutItItemsManager} : NewNoteButtonProps): JSX.Element {
-  const [forgetAboutItItems, setForgetAboutItItems] = forgetAboutItItemsManager
-  
+export default function NewNoteButton({
+  forgetAboutItItemsManager,
+}: NewNoteButtonProps): JSX.Element {
+  const [forgetAboutItItems, setForgetAboutItItems] = forgetAboutItItemsManager;
+
   function addNewNote(): void {
     const newItem = "hi";
     setForgetAboutItItems([...forgetAboutItItems, newItem]);

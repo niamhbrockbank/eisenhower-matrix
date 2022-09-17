@@ -12,8 +12,8 @@ function App(): JSX.Element {
   return (
     <>
       <Title />
-      <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager}/>
-      <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager}/>
+      <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager} />
+      <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
     </>
   );
 }

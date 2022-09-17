@@ -23,7 +23,7 @@
   color: white;
 }
 
-.draggable_note {
-  position: absolute;
-  border: 1px solid red;
+#notes{
+  position : absolute;
+  z-index: 5;
 }

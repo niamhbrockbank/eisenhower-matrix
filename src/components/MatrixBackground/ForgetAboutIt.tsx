@@ -8,7 +8,8 @@ interface ForgetAboutItProps {
 export default function ForgetAboutIt({
   forgetAboutItItemsManager,
 }: ForgetAboutItProps): JSX.Element {
-  const [forgetAboutItItems, setForgetAboutItItems] = forgetAboutItItemsManager;
+  const [forgetAboutItItems] = forgetAboutItItemsManager;
+  console.log(forgetAboutItItems)
 
   const tempItems = [
     { id: "1", note: "do something" },
@@ -16,9 +17,6 @@ export default function ForgetAboutIt({
     { id: "3", note: "hi" },
     { id: "4", note: "working?" },
   ];
-  // useEffect(() => {
-  //   console.log(`you have ${forgetAboutItItems.length} items`);
-  // }, [setForgetAboutItItems, forgetAboutItItems]);
 
   return (
     <div className="grid">

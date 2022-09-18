@@ -10,12 +10,5 @@ export default function ForgetAboutIt({
 }: ForgetAboutItProps): JSX.Element {
   // const [forgetAboutItItems] = forgetAboutItItemsManager;
 
-  // const tempItems = [
-  //   { id: "1", note: "do something" },
-  //   { id: "2", note: "do something else" },
-  //   { id: "3", note: "hi" },
-  //   { id: "4", note: "working?" },
-  // ];
-
   return <div className="grid">Forget about it</div>;
 }

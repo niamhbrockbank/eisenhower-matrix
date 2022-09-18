@@ -20,9 +20,9 @@ function App(): JSX.Element {
   
   const tempItems : Note[] = [
     { id: 1, note_body: "do something", position : {x : 20, y : 50} },
-    { id: 2, note_body: "do something else", position : {x : 200, y : 500} },
-    { id: 3, note_body: "hi" , position : {x : 300, y : 75}},
-    { id: 4, note_body: "working?", position : {x : 100, y : 50} },
+    { id: 2, note_body: "do something else", position : {x : 20, y : 50} },
+    { id: 3, note_body: "hi" , position : {x : 30, y : 75}},
+    { id: 4, note_body: "working?", position : {x : 10, y : 50} },
   ];
 
   const [tempItemsState, setTempItemsState] = useState(tempItems)
@@ -30,7 +30,7 @@ function App(): JSX.Element {
   const handleDragEnd = (e : MouseEvent, draggedId : number) => {
     const copyTempItems = [...tempItemsState]
     const draggedIndex = copyTempItems.findIndex(note => note.id === draggedId)
-    copyTempItems[draggedIndex].position = {x : e.clientX, y: e.clientX}
+    copyTempItems[draggedIndex].position = {x : e.clientX, y: e.clientY}
     setTempItemsState(copyTempItems)
   }
 

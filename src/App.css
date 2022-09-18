@@ -27,3 +27,20 @@
   position: absolute;
   z-index: 5;
 }
+
+.draggable {
+  border: 1px solid red;
+  width: 200px;
+}
+
+#drop_zone {
+  border: 1px solid red;
+  height: 500px;
+  width: 500px;
+}
+
+#easy_test {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}

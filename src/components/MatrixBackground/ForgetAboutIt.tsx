@@ -8,8 +8,7 @@ interface ForgetAboutItProps {
 export default function ForgetAboutIt({
   forgetAboutItItemsManager,
 }: ForgetAboutItProps): JSX.Element {
-  const [forgetAboutItItems] = forgetAboutItItemsManager;
-  console.log(forgetAboutItItems);
+  // const [forgetAboutItItems] = forgetAboutItItemsManager;
 
   // const tempItems = [
   //   { id: "1", note: "do something" },

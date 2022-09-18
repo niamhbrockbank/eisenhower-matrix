@@ -28,11 +28,10 @@ function App(): JSX.Element {
   const [tempItemsState, setTempItemsState] = useState(tempItems)
 
   const handleDragEnd = (e : MouseEvent, draggedId : number) => {
-    console.log("X: " + e.clientX + " | Y: " + e.clientY)
-    console.log(draggedId)
     const copyTempItems = [...tempItemsState]
     const draggedIndex = copyTempItems.findIndex(note => note.id === draggedId)
-    console.log(copyTempItems[draggedIndex].position)
+    copyTempItems[draggedIndex].position = {x : e.clientX, y: e.clientX}
+    setTempItemsState(copyTempItems)
   }
 
   const convertNotetoElement = (note : Note) : JSX.Element => {
@@ -57,7 +56,7 @@ function App(): JSX.Element {
       <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
 
       <div id='easy_test' className='draggable' draggable='true'>this will be draggable</div>
-      {tempItems.map(convertNotetoElement)}
+      {tempItemsState.map(convertNotetoElement)}
     </>
   );
 }

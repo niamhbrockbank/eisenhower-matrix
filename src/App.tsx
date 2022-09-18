@@ -29,6 +29,20 @@ function App(): JSX.Element {
     { id: 4, note_body: "working?", position : {x : 100, y : 50} },
   ];
 
+  const convertNotetoElement = (note : Note) : JSX.Element => {
+    return (
+      <div 
+        key={note.id} 
+        className='draggable' 
+        draggable='true'
+        style={{position : 'absolute',
+                left : `${note.position.x}px`,
+                top : `${note.position.y}px`}}>
+          {note.note_body}
+      </div>
+      )
+  }
+
   return (
     <>
       <Title />
@@ -36,7 +50,7 @@ function App(): JSX.Element {
       <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
 
       <div id='easy_test' className='draggable' draggable='true' onDragEnd={handleDragEnd}>this will be draggable</div>
-      {tempItems.map((n) => <div key={n.id} className='draggable' draggable='true'>{n.note_body}</div>)}
+      {tempItems.map(convertNotetoElement)}
     </>
   );
 }

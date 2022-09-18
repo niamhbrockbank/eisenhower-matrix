@@ -7,23 +7,12 @@ import NewNote from "./components/NewNote/NewNote";
 // import SketchP5Trial from "./components/SketchP5Trial";
 import Title from "./components/Title";
 
-function App(this: any): JSX.Element {
+function App(): JSX.Element {
   const forgetAboutItItemsManager = useState<string[]>([]);
-  const [state, setState] = useState({message : 'Mouse Event'})
 
-  const handleEvent= (event : MouseEvent) => {
-    if (event.type === 'mousedown'){
-      setState({message : "Mouse Down"})
-    } else {
-      setState({message : "Mouse Up"})
-    }
-  } 
-
-  const handleDrop = (event :  MouseEvent) => {
-    // event.stopPropogation()
-    event.preventDefault()
-    console.log('handle drop???')
-  };
+  const handleDrag = (e : MouseEvent) => {
+    console.log("X: " + e.clientX + " | Y: " + e.clientY)
+  }
 
   return (
     <>
@@ -31,11 +20,8 @@ function App(this: any): JSX.Element {
       <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager} />
       <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
       {/* <SketchP5Trial /> */}
-      <div>{state.message}</div>
-      <button onMouseDown={handleEvent} onMouseUp={handleEvent}>Change image</button>
 
-      <div id='draggable' draggable='true'>this will be draggable</div>
-      <div id='drop_zone' onDrop={handleDrop}>this is the drop zone </div>
+      <div id='draggable' draggable='true' onDrag={handleDrag}>this will be draggable</div>
     </>
   );
 }

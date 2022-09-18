@@ -17,11 +17,7 @@ interface Note{
 
 function App(): JSX.Element {
   const forgetAboutItItemsManager = useState<string[]>([]);
-
-  const handleDragEnd = (e : MouseEvent) => {
-    console.log("X: " + e.clientX + " | Y: " + e.clientY)
-  }
-
+  
   const tempItems : Note[] = [
     { id: 1, note_body: "do something", position : {x : 20, y : 50} },
     { id: 2, note_body: "do something else", position : {x : 200, y : 500} },
@@ -29,12 +25,23 @@ function App(): JSX.Element {
     { id: 4, note_body: "working?", position : {x : 100, y : 50} },
   ];
 
+  const [tempItemsState, setTempItemsState] = useState(tempItems)
+
+  const handleDragEnd = (e : MouseEvent, draggedId : number) => {
+    console.log("X: " + e.clientX + " | Y: " + e.clientY)
+    console.log(draggedId)
+    const copyTempItems = [...tempItemsState]
+    const draggedIndex = copyTempItems.findIndex(note => note.id === draggedId)
+    console.log(copyTempItems[draggedIndex].position)
+  }
+
   const convertNotetoElement = (note : Note) : JSX.Element => {
     return (
       <div 
         key={note.id} 
         className='draggable' 
         draggable='true'
+        onDragEnd={(e) => handleDragEnd(e, note.id)}
         style={{position : 'absolute',
                 left : `${note.position.x}px`,
                 top : `${note.position.y}px`}}>
@@ -49,7 +56,7 @@ function App(): JSX.Element {
       <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager} />
       <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
 
-      <div id='easy_test' className='draggable' draggable='true' onDragEnd={handleDragEnd}>this will be draggable</div>
+      <div id='easy_test' className='draggable' draggable='true'>this will be draggable</div>
       {tempItems.map(convertNotetoElement)}
     </>
   );

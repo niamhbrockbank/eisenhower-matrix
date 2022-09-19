@@ -65,7 +65,8 @@ export default function NewNoteButton({
           type='text' 
           placeholder="Write new note here..." 
           value={newNoteBody}
-          onChange={(e) => setNewNoteBody(e.target.value)}>
+          onChange={(e) => setNewNoteBody(e.target.value)}
+          style={{width : '465px', border: 'none'}}>
         </input>
       </Modal.Body>
       <Modal.Footer>

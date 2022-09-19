@@ -11,21 +11,21 @@ import convertNotetoElement from "./utils/convertNoteToElement";
 function App(): JSX.Element {
   const [offset, setOffset] = useState<Offset>({xOffset : 0, yOffset : 0}) 
 
-  const tempItems: Note[] = [
+  const fillerNotes: Note[] = [
     { id: 1, note_body: "do something", position: { x: 20, y: 50 } },
     { id: 2, note_body: "do something else", position: { x: 20, y: 50 } },
     { id: 3, note_body: "hi", position: { x: 30, y: 75 } },
     { id: 4, note_body: "working?", position: { x: 10, y: 50 } },
   ];
 
-  const [tempItemsState, setTempItemsState] = useState(tempItems);
+  const [notesArr, setNotesArr] = useState(fillerNotes);
 
   return (
     <>
       <Title />
       <MatrixBackground/>
-      <NewNote tempItemsManager= {[tempItemsState, setTempItemsState]}/>
-      {tempItemsState.map((note) => convertNotetoElement(note, tempItemsState, setTempItemsState, offset, setOffset))}
+      <NewNote notesManager= {[notesArr, setNotesArr]}/>
+      {notesArr.map((note) => convertNotetoElement(note, notesArr, setNotesArr, offset, setOffset))}
     </>
   );
 }

@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
+import { Note } from "../../types";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { useState } from "react";
 
-const Button = styled.button<{ primary?: boolean }>`
+const StyleButton = styled.button<{ primary?: boolean }>`
   background: transparent;
   border-radius: 3px;
   border: 2px solid #9967b6;
@@ -20,25 +24,48 @@ const Button = styled.button<{ primary?: boolean }>`
 `;
 
 interface NewNoteButtonProps {
-  forgetAboutItItemsManager: [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
+  tempItemsManager :[
+    Note[],
+    React.Dispatch<React.SetStateAction<Note[]>>
   ];
 }
 
 export default function NewNoteButton({
-  forgetAboutItItemsManager,
+  tempItemsManager
 }: NewNoteButtonProps): JSX.Element {
-  const [forgetAboutItItems, setForgetAboutItItems] = forgetAboutItItemsManager;
+  const [tempItems, setTempItems] = tempItemsManager
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   function addNewNote(): void {
-    const newItem = "hi";
-    setForgetAboutItItems([...forgetAboutItItems, newItem]);
+    const newNote = {id: 10, note_body: "hi new note here", position: {x : 200, y:150}};
+    setTempItems([...tempItems, newNote]);
+    handleShow()
   }
 
   return (
-    <Button primary={true} onClick={addNewNote}>
+    <>
+    <StyleButton primary={true} onClick={addNewNote}>
       New Note
-    </Button>
+    </StyleButton>
+
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleClose}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
+</>
   );
 }

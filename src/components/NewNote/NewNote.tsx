@@ -1,18 +1,19 @@
+import { Note } from "../../types";
 import NewNoteButton from "./NewNoteButton";
 
 interface NewNoteProps {
-  forgetAboutItItemsManager: [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
+  tempItemsManager :[
+    Note[],
+    React.Dispatch<React.SetStateAction<Note[]>>
   ];
 }
 
 export default function NewNote({
-  forgetAboutItItemsManager,
+  tempItemsManager
 }: NewNoteProps): JSX.Element {
   return (
     <>
-      <NewNoteButton forgetAboutItItemsManager={forgetAboutItItemsManager} />
+      <NewNoteButton tempItemsManager={tempItemsManager}/>
     </>
   );
 }

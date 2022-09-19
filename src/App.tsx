@@ -9,7 +9,6 @@ import { Note, Offset } from "./types";
 import convertNotetoElement from "./utils/convertNoteToElement";
 
 function App(): JSX.Element {
-  const forgetAboutItItemsManager = useState<string[]>([]);
   const [offset, setOffset] = useState<Offset>({xOffset : 0, yOffset : 0}) 
 
   const tempItems: Note[] = [
@@ -24,8 +23,8 @@ function App(): JSX.Element {
   return (
     <>
       <Title />
-      <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager} />
-      <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
+      <MatrixBackground/>
+      <NewNote tempItemsManager= {[tempItemsState, setTempItemsState]}/>
       {tempItemsState.map((note) => convertNotetoElement(note, tempItemsState, setTempItemsState, offset, setOffset))}
     </>
   );

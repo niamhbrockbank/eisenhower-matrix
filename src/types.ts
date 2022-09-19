@@ -6,3 +6,8 @@ export interface Note {
       y: number;
     };
   }
+
+  export interface Offset{
+    xOffset : number, 
+    yOffset : number
+  }

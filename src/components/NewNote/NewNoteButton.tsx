@@ -1,20 +1,20 @@
 import { Button } from "../../styles";
 
 interface NewNoteButtonProps {
-  showManager : [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+  showManager: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }
 
 export default function NewNoteButton({
-  showManager
+  showManager,
 }: NewNoteButtonProps): JSX.Element {
-  const setShow = showManager[1]
+  const setShow = showManager[1];
   const handleShow = () => setShow(true);
 
   return (
     <>
-    <Button primary={true} newNote={true} onClick={handleShow}>
-      New Note
-    </Button>
-</>
+      <Button primary={true} newNote={true} onClick={handleShow}>
+        New Note
+      </Button>
+    </>
   );
 }

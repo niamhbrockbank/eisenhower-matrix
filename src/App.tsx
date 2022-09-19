@@ -9,7 +9,7 @@ import { Note, Offset } from "./types";
 import convertNotetoElement from "./utils/convertNoteToElement";
 
 function App(): JSX.Element {
-  const [offset, setOffset] = useState<Offset>({xOffset : 0, yOffset : 0}) 
+  const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
 
   const fillerNotes: Note[] = [
     { id: 1, note_body: "do something", position: { x: 20, y: 50 } },
@@ -23,9 +23,11 @@ function App(): JSX.Element {
   return (
     <>
       <Title />
-      <MatrixBackground/>
-      <NewNote notesManager= {[notesArr, setNotesArr]}/>
-      {notesArr.map((note) => convertNotetoElement(note, notesArr, setNotesArr, offset, setOffset))}
+      <MatrixBackground />
+      <NewNote notesManager={[notesArr, setNotesArr]} />
+      {notesArr.map((note) =>
+        convertNotetoElement(note, notesArr, setNotesArr, offset, setOffset)
+      )}
     </>
   );
 }

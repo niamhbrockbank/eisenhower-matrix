@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components";
 import { Note } from "../../types";
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 
-const StyleButton = styled.button<{ primary?: boolean }>`
+const Button = styled.button<{ primary?: boolean }>`
   background: transparent;
   border-radius: 3px;
   border: 2px solid #9967b6;
@@ -48,9 +47,9 @@ export default function NewNoteButton({
 
   return (
     <>
-    <StyleButton primary={true} onClick={addNewNote}>
+    <Button primary={true} onClick={addNewNote}>
       New Note
-    </StyleButton>
+    </Button>
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -58,10 +57,10 @@ export default function NewNoteButton({
       </Modal.Header>
       <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleClose}>
+        <Button primary={true} onClick={handleClose}>
           Save Changes
         </Button>
       </Modal.Footer>

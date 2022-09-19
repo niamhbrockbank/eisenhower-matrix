@@ -2,8 +2,9 @@ import styled, { css } from "styled-components";
 import { Note } from "../../types";
 import Modal from 'react-bootstrap/Modal';
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const Button = styled.button<{ primary?: boolean }>`
+const StyleButton = styled.button<{ primary?: boolean }>`
   background: transparent;
   border-radius: 3px;
   border: 2px solid #9967b6;
@@ -40,27 +41,37 @@ export default function NewNoteButton({
   const handleShow = () => setShow(true);
 
   function addNewNote(): void {
-    const newNote = {id: 10, note_body: "hi new note here", position: {x : 200, y:150}};
+    const newNote = {id: 10, note_body: `${newNoteBody}`, position: {x : 200, y:150}};
     setTempItems([...tempItems, newNote]);
-    handleShow()
+    handleClose()
+    setNewNoteBody("")
   }
+
+  const [newNoteBody, setNewNoteBody] = useState("")
 
   return (
     <>
-    <Button primary={true} onClick={addNewNote}>
+    <StyleButton primary={true} onClick={handleShow}>
       New Note
-    </Button>
+    </StyleButton>
 
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>New Note</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+      <Modal.Body>
+        <input 
+          type='text' 
+          placeholder="Write new note here..." 
+          value={newNoteBody}
+          onChange={(e) => setNewNoteBody(e.target.value)}>
+        </input>
+      </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleClose}>
           Close
         </Button>
-        <Button primary={true} onClick={handleClose}>
+        <Button onClick={addNewNote}>
           Save Changes
         </Button>
       </Modal.Footer>

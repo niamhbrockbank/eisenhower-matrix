@@ -41,7 +41,8 @@ export default function NewNoteButton({
   const handleShow = () => setShow(true);
 
   function addNewNote(): void {
-    const newNote = {id: 10, note_body: `${newNoteBody}`, position: {x : 200, y:150}};
+    const newId = tempItems.length + 1
+    const newNote = {id: newId, note_body: `${newNoteBody}`, position: {x : 200, y:150}};
     setTempItems([...tempItems, newNote]);
     handleClose()
     setNewNoteBody("")

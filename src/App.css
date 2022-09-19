@@ -4,16 +4,16 @@
 }
 .grid_box {
   display: grid;
-  grid-template-columns: repeat(2, min(45vw, 45vh));
-  grid-template-rows: repeat(2, min(45vw, 45vh));
+  grid-template-columns: 400px 400px;
+  grid-template-rows: 400px 400px;
 
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   top: 0;
-  margin: 90px 20px 150px 20px;
-  justify-content: center;
+  margin: 70px 20px 150px 20px;
+  justify-content: start;
 }
 
 .grid {

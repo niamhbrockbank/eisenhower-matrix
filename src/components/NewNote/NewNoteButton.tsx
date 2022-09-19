@@ -21,7 +21,7 @@ const Button = styled.button<{ primary?: boolean, newNote? : boolean }>`
     props.newNote &&
     css`
       position: fixed;
-      bottom: 30px;
+      top: 15px;
       right: 30px;
       margin: 0.5em 1em;
     `}
@@ -46,7 +46,7 @@ export default function NewNoteButton({
 
   function addNewNote(): void {
     const newId = tempItems.length + 1
-    const newNote = {id: newId, note_body: `${newNoteBody}`, position: {x : 200, y:150}};
+    const newNote = {id: newId, note_body: `${newNoteBody}`, position: {x : 880, y:100}};
     setTempItems([...tempItems, newNote]);
     handleClose()
     setNewNoteBody("")

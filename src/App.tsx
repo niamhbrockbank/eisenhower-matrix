@@ -1,19 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "holderjs";
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 import "./App.css";
 import MatrixBackground from "./components/MatrixBackground/MatrixBackground";
 import NewNote from "./components/NewNote/NewNote";
 import Title from "./components/Title";
-
-interface Note {
-  id: number;
-  note_body: string;
-  position: {
-    x: number;
-    y: number;
-  };
-}
+import { Note } from "./types";
+import convertNotetoElement from "./utils/convertNoteToElement";
 
 function App(): JSX.Element {
   const forgetAboutItItemsManager = useState<string[]>([]);
@@ -27,43 +20,12 @@ function App(): JSX.Element {
 
   const [tempItemsState, setTempItemsState] = useState(tempItems);
 
-  const handleDragEnd = (e: MouseEvent, draggedId: number) => {
-    const copyTempItems = [...tempItemsState];
-    const draggedIndex = copyTempItems.findIndex(
-      (note) => note.id === draggedId
-    );
-    copyTempItems[draggedIndex].position = { x: e.clientX, y: e.clientY };
-    setTempItemsState(copyTempItems);
-  };
-
-  const convertNotetoElement = (note: Note): JSX.Element => {
-    return (
-      <div
-        key={note.id}
-        className="draggable"
-        draggable="true"
-        onDragEnd={(e) => handleDragEnd(e, note.id)}
-        style={{
-          position: "absolute",
-          left: `${note.position.x}px`,
-          top: `${note.position.y}px`,
-        }}
-      >
-        {note.note_body}
-      </div>
-    );
-  };
-
   return (
     <>
       <Title />
       <MatrixBackground forgetAboutItItemsManager={forgetAboutItItemsManager} />
       <NewNote forgetAboutItItemsManager={forgetAboutItItemsManager} />
-
-      <div id="easy_test" className="draggable" draggable="true">
-        this will be draggable
-      </div>
-      {tempItemsState.map(convertNotetoElement)}
+      {tempItemsState.map((note) => convertNotetoElement(note, tempItemsState, setTempItemsState))}
     </>
   );
 }

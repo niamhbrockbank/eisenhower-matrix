@@ -1,14 +1,3 @@
-interface ForgetAboutItProps {
-  forgetAboutItItemsManager: [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
-  ];
-}
-
-export default function ForgetAboutIt({
-  forgetAboutItItemsManager,
-}: ForgetAboutItProps): JSX.Element {
-  // const [forgetAboutItItems] = forgetAboutItItemsManager;
-
+export default function ForgetAboutIt(): JSX.Element {
   return <div className="grid">Forget about it</div>;
 }

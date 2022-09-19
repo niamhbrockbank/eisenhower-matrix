@@ -1,18 +1,25 @@
+import { useState } from "react";
+import { Note } from "../../types";
 import NewNoteButton from "./NewNoteButton";
+import NewNoteModal from "./NewNoteModal";
 
 interface NewNoteProps {
-  forgetAboutItItemsManager: [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
-  ];
+  notesManager: [Note[], React.Dispatch<React.SetStateAction<Note[]>>];
 }
 
-export default function NewNote({
-  forgetAboutItItemsManager,
-}: NewNoteProps): JSX.Element {
+export default function NewNote({ notesManager }: NewNoteProps): JSX.Element {
+  const showManager = useState(false);
+
+  const newNoteBodyManager = useState("");
+
   return (
     <>
-      <NewNoteButton forgetAboutItItemsManager={forgetAboutItItemsManager} />
+      <NewNoteButton showManager={showManager} />
+      <NewNoteModal
+        notesManager={notesManager}
+        newNoteBodyManager={newNoteBodyManager}
+        showManager={showManager}
+      />
     </>
   );
 }

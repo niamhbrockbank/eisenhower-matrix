@@ -6,7 +6,7 @@ export default function convertNotetoElement(note: Note, tempItemsState :Note[],
   return (
       <div
         key={note.id}
-        className="draggable"
+        className="note_div"
         draggable="true"
         onDragStart={(e) => handleDragStart(e, note, setOffset)}
         onDragEnd={(e) => handleDragEnd(e, note.id, tempItemsState, setTempItemsState, offset)}

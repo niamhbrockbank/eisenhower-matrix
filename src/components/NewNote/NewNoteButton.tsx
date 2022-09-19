@@ -1,31 +1,7 @@
-import styled, { css } from "styled-components";
 import { Note } from "../../types";
 import Modal from 'react-bootstrap/Modal';
 import { useState } from "react";
-
-const Button = styled.button<{ primary?: boolean, newNote? : boolean }>`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid #9967b6;
-  color: #9967b6;
-  padding: 0.35em 1.5em;
-
-  ${(props) =>
-    props.primary &&
-    css`
-      background: #9967b6;
-      color: white;
-    `}
-
-  ${(props) =>
-    props.newNote &&
-    css`
-      position: fixed;
-      top: 15px;
-      right: 30px;
-      margin: 0.5em 1em;
-    `}
-`;
+import { Button } from "../../styles";
 
 interface NewNoteButtonProps {
   tempItemsManager :[
@@ -46,7 +22,7 @@ export default function NewNoteButton({
 
   function addNewNote(): void {
     const newId = tempItems.length + 1
-    const newNote = {id: newId, note_body: `${newNoteBody}`, position: {x : 880, y:100}};
+    const newNote = {id: newId, note_body: `${newNoteBody}`, position: {x : 465, y:540}};
     setTempItems([...tempItems, newNote]);
     handleClose()
     setNewNoteBody("")

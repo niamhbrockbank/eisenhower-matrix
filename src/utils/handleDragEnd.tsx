@@ -8,6 +8,7 @@ export default function handleDragEnd(
   setTempItemsState: React.Dispatch<React.SetStateAction<Note[]>>,
   offset: Offset
 ): void {
+  e.preventDefault();
   const { xOffset, yOffset } = offset;
 
   const copyTempItems = [...tempItemsState];

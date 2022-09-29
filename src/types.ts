@@ -1,10 +1,8 @@
 export interface Note {
-  id: number;
+  note_id: number;
   note_body: string;
-  position: {
-    x: number;
-    y: number;
-  };
+  position_x : number;
+  position_y : number;
 }
 
 export interface Offset {

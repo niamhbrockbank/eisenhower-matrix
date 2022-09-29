@@ -1,34 +1,28 @@
+import axios from "axios";
 import { Modal } from "react-bootstrap";
 import { Button } from "../../styles";
-import { Note } from "../../types";
 
 interface NewNoteModalProps {
-  notesManager: [Note[], React.Dispatch<React.SetStateAction<Note[]>>];
   newNoteBodyManager: [string, React.Dispatch<React.SetStateAction<string>>];
   showManager: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+  getNotes : () => Promise<void>
 }
 
 export default function NewNoteModal({
-  notesManager,
   newNoteBodyManager,
   showManager,
+  getNotes
 }: NewNoteModalProps): JSX.Element {
-  const [notesArr, setNotesArr] = notesManager;
   const [newNoteBody, setNewNoteBody] = newNoteBodyManager;
   const [show, setShow] = showManager;
 
   const handleClose = () => setShow(false);
 
-  function addNewNote(): void {
-    const newId = notesArr.length + 1;
-    const newNote = {
-      id: newId,
-      note_body: `${newNoteBody}`,
-      position: { x: 465, y: 540 },
-    };
-    setNotesArr([...notesArr, newNote]);
+  async function addNewNote(): Promise<void> {
+    await axios.post('https://priorities-measure.herokuapp.com/notes', {note_body : newNoteBody})
     handleClose();
     setNewNoteBody("");
+    getNotes()
   }
 
   return (

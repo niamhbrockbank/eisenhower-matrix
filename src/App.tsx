@@ -7,7 +7,7 @@ import MatrixBackground from "./components/MatrixBackground/MatrixBackground";
 import NewNote from "./components/NewNote/NewNote";
 import Title from "./components/Title";
 import { Note, Offset } from "./types";
-import convertNotetoElement from "./utils/convertNoteToElement";
+import ConvertNotetoElement from "./utils/ConvertNoteToElement";
 
 function App(): JSX.Element {
   const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
@@ -28,7 +28,7 @@ function App(): JSX.Element {
       <MatrixBackground />
       <NewNote getNotes={getNotes}/>
       {notesArr.length > 1 && notesArr.map((note) =>
-        convertNotetoElement(note, notesArr, setNotesArr, offset, setOffset)
+        <ConvertNotetoElement key={note.note_id} note={note} notesArr={notesArr} setNotesArr={setNotesArr} offset={offset} setOffset={setOffset}/>
       )}
     </>
   );

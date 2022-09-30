@@ -6,7 +6,7 @@ export default function handleDragStart(
   note: Note,
   setOffset: React.Dispatch<React.SetStateAction<Offset>>
 ): void {
-  const xOffset = event.clientX - note.position.x;
-  const yOffset = event.clientY - note.position.y;
+  const xOffset = event.clientX - note.position_x;
+  const yOffset = event.clientY - note.position_y;
   setOffset({ xOffset, yOffset });
 }

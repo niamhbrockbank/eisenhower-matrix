@@ -1,33 +1,43 @@
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "holderjs";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import MatrixBackground from "./components/MatrixBackground/MatrixBackground";
 import NewNote from "./components/NewNote/NewNote";
 import Title from "./components/Title";
-import { Note, Offset } from "./types";
-import convertNotetoElement from "./utils/convertNoteToElement";
+import { Note } from "./types";
+import NoteElement from "./components/NoteElement";
 
 function App(): JSX.Element {
-  const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
+  const [notesArr, setNotesArr] = useState<Note[]>([]);
 
-  const fillerNotes: Note[] = [
-    { id: 1, note_body: "do something", position: { x: 115, y: 630 } },
-    { id: 2, note_body: "do something else", position: { x: 650, y: 170 } },
-    { id: 3, note_body: "hi", position: { x: 250, y: 230 } },
-    { id: 4, note_body: "working?", position: { x: 475, y: 200 } },
-  ];
+  const getNotes = useCallback(async () => {
+    const response = await axios.get(
+      "https://priorities-measure.herokuapp.com/notes"
+    );
+    setNotesArr(response.data);
+  }, []);
 
-  const [notesArr, setNotesArr] = useState(fillerNotes);
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
 
   return (
     <>
       <Title />
       <MatrixBackground />
-      <NewNote notesManager={[notesArr, setNotesArr]} />
-      {notesArr.map((note) =>
-        convertNotetoElement(note, notesArr, setNotesArr, offset, setOffset)
-      )}
+      <NewNote getNotes={getNotes} />
+      {notesArr.length > 1 &&
+        notesArr.map((note) => (
+          <NoteElement
+            key={note.note_id}
+            note={note}
+            notesArr={notesArr}
+            setNotesArr={setNotesArr}
+            getNotes={getNotes}
+          />
+        ))}
     </>
   );
 }

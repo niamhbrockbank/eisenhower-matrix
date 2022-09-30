@@ -3,6 +3,14 @@
   position: fixed;
   font-size: 28pt;
 }
+
+#holding_zone {
+  position: fixed;
+  left: 850px;
+  top: 85px;
+  white-space: nowrap;
+  font-size: large;
+}
 .grid_box {
   display: grid;
   grid-template-columns: 400px 400px;

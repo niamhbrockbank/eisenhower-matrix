@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../styles";
+import { Button, DeleteButton } from "../styles";
 import { Note, Offset } from "../types";
 import deleteNote from "../utils/deleteNote";
 import handleDragEnd from "../utils/handleDragEnd";
@@ -40,7 +40,7 @@ export default function NoteElement({
       }}
     >
       {note.note_body}
-      {deleteButtonShown && <Button onClick={() => {deleteNote(hoverOverNoteId); getNotes()}}>Delete</Button>}
+      {deleteButtonShown && <DeleteButton onClick={() => {deleteNote(hoverOverNoteId); getNotes()}}>🗑️</DeleteButton>}
     </div>
   );
 }

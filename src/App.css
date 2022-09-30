@@ -5,9 +5,9 @@
 }
 
 #holding_zone {
-  position : fixed;
-  left : 850px;
-  top : 85px;
+  position: fixed;
+  left: 850px;
+  top: 85px;
   white-space: nowrap;
   font-size: large;
 }

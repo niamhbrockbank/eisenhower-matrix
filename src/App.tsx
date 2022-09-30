@@ -13,22 +13,31 @@ function App(): JSX.Element {
   const [notesArr, setNotesArr] = useState<Note[]>([]);
 
   const getNotes = useCallback(async () => {
-    const response = await axios.get('https://priorities-measure.herokuapp.com/notes')
-    setNotesArr(response.data)
-  }, [])
+    const response = await axios.get(
+      "https://priorities-measure.herokuapp.com/notes"
+    );
+    setNotesArr(response.data);
+  }, []);
 
   useEffect(() => {
-    getNotes()
-  }, [getNotes])
+    getNotes();
+  }, [getNotes]);
 
   return (
     <>
       <Title />
       <MatrixBackground />
-      <NewNote getNotes={getNotes}/>
-      {notesArr.length > 1 && notesArr.map((note) =>
-        <NoteElement key={note.note_id} note={note} notesArr={notesArr} setNotesArr={setNotesArr} getNotes={getNotes}/>
-      )}
+      <NewNote getNotes={getNotes} />
+      {notesArr.length > 1 &&
+        notesArr.map((note) => (
+          <NoteElement
+            key={note.note_id}
+            note={note}
+            notesArr={notesArr}
+            setNotesArr={setNotesArr}
+            getNotes={getNotes}
+          />
+        ))}
     </>
   );
 }

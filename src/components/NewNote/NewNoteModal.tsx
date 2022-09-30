@@ -5,13 +5,13 @@ import { Button } from "../../styles";
 interface NewNoteModalProps {
   newNoteBodyManager: [string, React.Dispatch<React.SetStateAction<string>>];
   showManager: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-  getNotes : () => Promise<void>
+  getNotes: () => Promise<void>;
 }
 
 export default function NewNoteModal({
   newNoteBodyManager,
   showManager,
-  getNotes
+  getNotes,
 }: NewNoteModalProps): JSX.Element {
   const [newNoteBody, setNewNoteBody] = newNoteBodyManager;
   const [show, setShow] = showManager;
@@ -19,10 +19,12 @@ export default function NewNoteModal({
   const handleClose = () => setShow(false);
 
   async function addNewNote(): Promise<void> {
-    await axios.post('https://priorities-measure.herokuapp.com/notes', {note_body : newNoteBody})
+    await axios.post("https://priorities-measure.herokuapp.com/notes", {
+      note_body: newNoteBody,
+    });
     handleClose();
     setNewNoteBody("");
-    getNotes()
+    getNotes();
   }
 
   return (

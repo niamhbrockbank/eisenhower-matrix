@@ -13,13 +13,15 @@ export default function handleDragEnd(
   const { xOffset, yOffset } = offset;
 
   const copyOfNotes = [...notesArr];
-  const draggedIndex = copyOfNotes.findIndex((note) => note.note_id === draggedId);
+  const draggedIndex = copyOfNotes.findIndex(
+    (note) => note.note_id === draggedId
+  );
 
   const newXPosition = e.clientX - xOffset;
   const newYPosition = e.clientY - yOffset;
 
   copyOfNotes[draggedIndex].position_x = newXPosition;
   copyOfNotes[draggedIndex].position_y = newYPosition;
-  updateNoteInDB(copyOfNotes[draggedIndex])
+  updateNoteInDB(copyOfNotes[draggedIndex]);
   setNotesArr(copyOfNotes);
 }

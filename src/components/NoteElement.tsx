@@ -1,26 +1,26 @@
 import { useState } from "react";
-import { Button, DeleteButton } from "../styles";
+import { DeleteButton } from "../styles";
 import { Note, Offset } from "../types";
 import deleteNote from "../utils/deleteNote";
 import handleDragEnd from "../utils/handleDragEnd";
 import handleDragStart from "../utils/handleDragStart";
 
 interface NoteElementProps {
-  note: Note,
-  notesArr: Note[],
-  setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>,
-  getNotes: () => Promise<void>
+  note: Note;
+  notesArr: Note[];
+  setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>;
+  getNotes: () => Promise<void>;
 }
 
 export default function NoteElement({
   note,
   notesArr,
   setNotesArr,
-  getNotes
-} : NoteElementProps): JSX.Element {
+  getNotes,
+}: NoteElementProps): JSX.Element {
   const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
-  const [deleteButtonShown, setDeleteButtonShown] = useState(false)
-  const [hoverOverNoteId, setHoverOverNoteId] = useState<number>(NaN)
+  const [deleteButtonShown, setDeleteButtonShown] = useState(false);
+  const [hoverOverNoteId, setHoverOverNoteId] = useState<number>(NaN);
 
   return (
     <div
@@ -31,8 +31,14 @@ export default function NoteElement({
       onDragEnd={(e) =>
         handleDragEnd(e, note.note_id, notesArr, setNotesArr, offset)
       }
-      onMouseEnter={() => {setDeleteButtonShown(true); setHoverOverNoteId(note.note_id)}}
-      onMouseLeave={() => {setDeleteButtonShown(false); setHoverOverNoteId(NaN)}}
+      onMouseEnter={() => {
+        setDeleteButtonShown(true);
+        setHoverOverNoteId(note.note_id);
+      }}
+      onMouseLeave={() => {
+        setDeleteButtonShown(false);
+        setHoverOverNoteId(NaN);
+      }}
       style={{
         position: "fixed",
         left: `${note.position_x}px`,
@@ -40,7 +46,16 @@ export default function NoteElement({
       }}
     >
       {note.note_body}
-      {deleteButtonShown && <DeleteButton onClick={() => {deleteNote(hoverOverNoteId); getNotes()}}>🗑️</DeleteButton>}
+      {deleteButtonShown && (
+        <DeleteButton
+          onClick={() => {
+            deleteNote(hoverOverNoteId);
+            getNotes();
+          }}
+        >
+          🗑️
+        </DeleteButton>
+      )}
     </div>
   );
 }

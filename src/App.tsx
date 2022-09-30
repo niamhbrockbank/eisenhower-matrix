@@ -6,11 +6,10 @@ import "./App.css";
 import MatrixBackground from "./components/MatrixBackground/MatrixBackground";
 import NewNote from "./components/NewNote/NewNote";
 import Title from "./components/Title";
-import { Note, Offset } from "./types";
-import ConvertNotetoElement from "./utils/ConvertNoteToElement";
+import { Note } from "./types";
+import NoteElement from "./components/NoteElement";
 
 function App(): JSX.Element {
-  const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
   const [notesArr, setNotesArr] = useState<Note[]>([]);
 
   const getNotes = useCallback(async () => {
@@ -28,7 +27,7 @@ function App(): JSX.Element {
       <MatrixBackground />
       <NewNote getNotes={getNotes}/>
       {notesArr.length > 1 && notesArr.map((note) =>
-        <ConvertNotetoElement key={note.note_id} note={note} notesArr={notesArr} setNotesArr={setNotesArr} offset={offset} setOffset={setOffset}/>
+        <NoteElement key={note.note_id} note={note} notesArr={notesArr} setNotesArr={setNotesArr} getNotes={getNotes}/>
       )}
     </>
   );

@@ -1,3 +1,3 @@
 export default function Title(): JSX.Element {
-  return <h1 id="page_title">Board Title</h1>;
+  return <h1 id="page_title">Priorities Matrix</h1>;
 }

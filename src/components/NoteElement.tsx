@@ -1,26 +1,24 @@
 import { useState } from "react";
 import { Button } from "../styles";
 import { Note, Offset } from "../types";
-import deleteNote from "./deleteNote";
-import handleDragEnd from "./handleDragEnd";
-import handleDragStart from "./handleDragStart";
+import deleteNote from "../utils/deleteNote";
+import handleDragEnd from "../utils/handleDragEnd";
+import handleDragStart from "../utils/handleDragStart";
 
-interface ConvertNoteToElementProps {
+interface NoteElementProps {
   note: Note,
   notesArr: Note[],
   setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>,
-  offset: Offset,
-  setOffset: React.Dispatch<React.SetStateAction<Offset>>,
+  getNotes: () => Promise<void>
 }
 
-export default function ConvertNotetoElement({
+export default function NoteElement({
   note,
   notesArr,
   setNotesArr,
-  offset,
-  setOffset
-} : ConvertNoteToElementProps): JSX.Element {
-
+  getNotes
+} : NoteElementProps): JSX.Element {
+  const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
   const [deleteButtonShown, setDeleteButtonShown] = useState(false)
   const [hoverOverNoteId, setHoverOverNoteId] = useState<number>(NaN)
 
@@ -36,13 +34,13 @@ export default function ConvertNotetoElement({
       onMouseEnter={() => {setDeleteButtonShown(true); setHoverOverNoteId(note.note_id)}}
       onMouseLeave={() => {setDeleteButtonShown(false); setHoverOverNoteId(NaN)}}
       style={{
-        position: "absolute",
+        position: "fixed",
         left: `${note.position_x}px`,
         top: `${note.position_y}px`,
       }}
     >
       {note.note_body}
-      {deleteButtonShown && <Button onClick={() => deleteNote(hoverOverNoteId)}>Delete</Button>}
+      {deleteButtonShown && <Button onClick={() => {deleteNote(hoverOverNoteId); getNotes()}}>Delete</Button>}
     </div>
   );
 }

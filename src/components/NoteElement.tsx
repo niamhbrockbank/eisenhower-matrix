@@ -45,7 +45,7 @@ export default function NoteElement({
         top: `${note.position_y}px`,
       }}
     >
-      {note.note_body}
+      {note.note_body.length < 30? note.note_body : `${note.note_body.slice(0,27)}...`}
       {deleteButtonShown && (
         <DeleteButton
           onClick={() => {

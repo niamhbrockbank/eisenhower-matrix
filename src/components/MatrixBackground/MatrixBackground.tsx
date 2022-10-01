@@ -1,25 +1,40 @@
+import { Note } from "../../types";
+import handleDragOver from "../../utils/handleDragOver";
+import handleDrop from "../../utils/handleDrop";
+import NoteElement from "../NoteElement";
 import Delegate from "./Delegate";
 import DoFirst from "./DoFirst";
 import ForgetAboutIt from "./ForgetAboutIt";
 import Schedule from "./Schedule";
-import { MouseEvent } from "react";
 
-export default function MatrixBackground(): JSX.Element {
-  function handleDrop(event: MouseEvent) {
-    event.stopPropagation();
-  }
+interface MatrixBackgroundProps {
+  getNotes: () => Promise<void>;
+  notesArr: Note[];
+  setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>;
+}
 
-  function handleDragOver(event: MouseEvent) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
-
+export default function MatrixBackground({
+  getNotes,
+  notesArr,
+  setNotesArr,
+}: MatrixBackgroundProps): JSX.Element {
   return (
     <div className="grid_box" onDrop={handleDrop} onDragOver={handleDragOver}>
       <DoFirst />
       <Schedule />
       <Delegate />
       <ForgetAboutIt />
+
+      {notesArr.length > 1 &&
+        notesArr.map((note) => (
+          <NoteElement
+            key={note.note_id}
+            note={note}
+            notesArr={notesArr}
+            setNotesArr={setNotesArr}
+            getNotes={getNotes}
+          />
+        ))}
     </div>
   );
 }

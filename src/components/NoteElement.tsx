@@ -4,6 +4,7 @@ import { Note, Offset } from "../types";
 import deleteNote from "../utils/deleteNote";
 import handleDragEnd from "../utils/handleDragEnd";
 import handleDragStart from "../utils/handleDragStart";
+import NoteModal from "./NoteModal";
 
 interface NoteElementProps {
   note: Note;
@@ -21,6 +22,7 @@ export default function NoteElement({
   const [offset, setOffset] = useState<Offset>({ xOffset: 0, yOffset: 0 });
   const [deleteButtonShown, setDeleteButtonShown] = useState(false);
   const [hoverOverNoteId, setHoverOverNoteId] = useState<number>(NaN);
+  const [showNoteModal, setShowNoteModal] = useState(false);
 
   return (
     <div
@@ -44,8 +46,11 @@ export default function NoteElement({
         left: `${note.position_x}px`,
         top: `${note.position_y}px`,
       }}
+      onDoubleClick={() => setShowNoteModal(true)}
     >
-      {note.note_body.length < 30? note.note_body : `${note.note_body.slice(0,27)}...`}
+      {note.note_body.length < 35
+        ? note.note_body
+        : `${note.note_body.slice(0, 30)}...`}
       {deleteButtonShown && (
         <DeleteButton
           onClick={() => {
@@ -55,6 +60,12 @@ export default function NoteElement({
         >
           🗑️
         </DeleteButton>
+      )}
+      {showNoteModal && (
+        <NoteModal
+          setShowNoteModal={setShowNoteModal}
+          noteBody={note.note_body}
+        />
       )}
     </div>
   );

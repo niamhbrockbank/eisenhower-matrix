@@ -48,3 +48,27 @@ export const DeleteButton = styled.button`
   bottom: 2px;
   right: 2px;
 `;
+
+export const Modal = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 200;
+`;
+
+export const ModalBody = styled.div`
+  width: 500px;
+  height: 500px;
+  background-color: rgb(230, 223, 232);
+  font-size: 10pt;
+  padding: 6px 5px;
+  box-shadow: 1px 3px 3px;
+  border-radius: 0px 0px 1px;
+  position: fixed;
+  left: calc(50vw - 250px);
+  top: calc(50vh - 250px);
+  z-index: 230;
+`;

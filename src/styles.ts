@@ -64,7 +64,7 @@ export const ModalBody = styled.div`
   height: 500px;
   background-color: rgb(230, 223, 232);
   font-size: 10pt;
-  padding: 6px 5px;
+  padding: 20px 30px;
   box-shadow: 1px 3px 3px;
   border-radius: 0px 0px 1px;
   position: fixed;

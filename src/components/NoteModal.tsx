@@ -14,7 +14,11 @@ export default function NoteModal({
       <Modal>
         <ModalBody>
           <p>{noteBody}</p>
-          <Button onClick={() => setShowNoteModal(false)} primary={true}>
+          <Button
+            onClick={() => setShowNoteModal(false)}
+            primary={true}
+            style={{ position: "absolute", bottom: "20px", right: "30px" }}
+          >
             Close
           </Button>
         </ModalBody>

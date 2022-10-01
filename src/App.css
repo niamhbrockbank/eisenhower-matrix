@@ -13,7 +13,7 @@
   font-size: large;
 } */
 
-#drop_area{
+#drop_area {
   display: flex;
   justify-content: center;
 }

@@ -7,30 +7,34 @@ import DoFirst from "./DoFirst";
 import ForgetAboutIt from "./ForgetAboutIt";
 import Schedule from "./Schedule";
 
-interface MatrixBackgroundProps{
+interface MatrixBackgroundProps {
   getNotes: () => Promise<void>;
   notesArr: Note[];
   setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>;
 }
 
-export default function MatrixBackground({getNotes, notesArr, setNotesArr}: MatrixBackgroundProps): JSX.Element {
+export default function MatrixBackground({
+  getNotes,
+  notesArr,
+  setNotesArr,
+}: MatrixBackgroundProps): JSX.Element {
   return (
     <div className="grid_box" onDrop={handleDrop} onDragOver={handleDragOver}>
       <DoFirst />
       <Schedule />
-      <Delegate /> 
+      <Delegate />
       <ForgetAboutIt />
 
       {notesArr.length > 1 &&
-          notesArr.map((note) => (
-            <NoteElement
-              key={note.note_id}
-              note={note}
-              notesArr={notesArr}
-              setNotesArr={setNotesArr}
-              getNotes={getNotes}
-            />
-          ))}
+        notesArr.map((note) => (
+          <NoteElement
+            key={note.note_id}
+            note={note}
+            notesArr={notesArr}
+            setNotesArr={setNotesArr}
+            getNotes={getNotes}
+          />
+        ))}
     </div>
   );
 }

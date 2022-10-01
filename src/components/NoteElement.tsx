@@ -42,7 +42,7 @@ export default function NoteElement({
       style={{
         position: "absolute",
         left: `${note.position_x}px`,
-        top: `${note.position_y}px`
+        top: `${note.position_y}px`,
       }}
     >
       {note.note_body}

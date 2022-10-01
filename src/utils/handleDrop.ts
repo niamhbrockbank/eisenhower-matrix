@@ -1,6 +1,6 @@
-import { MouseEvent } from "react"
+import { MouseEvent } from "react";
 
-export default function handleDrop(event: MouseEvent) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
+export default function handleDrop(event: MouseEvent): void {
+  event.stopPropagation();
+  event.preventDefault();
+}

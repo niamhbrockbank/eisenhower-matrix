@@ -10,6 +10,7 @@ export const Button = styled.button<{
   border: 2px solid #9967b6;
   color: #9967b6;
   padding: 0.35em 1.5em;
+  white-space: nowrap;
 
   ${(props) =>
     props.primary &&
@@ -23,7 +24,7 @@ export const Button = styled.button<{
     css`
       position: fixed;
       top: 15px;
-      left: 650px;
+      right: 20px;
       margin: 0.5em 1em;
     `}
 

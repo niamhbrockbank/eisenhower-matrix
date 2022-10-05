@@ -28,7 +28,7 @@ export default function NewNoteModal({
   }
 
   return (
-    <div id='new_note_modal'>
+    <div id="new_note_modal">
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>New Note</Modal.Title>

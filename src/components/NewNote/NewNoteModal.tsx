@@ -28,25 +28,27 @@ export default function NewNoteModal({
   }
 
   return (
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>New Note</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <input
-          type="text"
-          placeholder="Write here..."
-          value={newNoteBody}
-          onChange={(e) => setNewNoteBody(e.target.value)}
-          style={{ width: "465px", border: "none" }}
-        ></input>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleClose}>Close</Button>
-        <Button onClick={addNewNote} primary={true}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <div id="new_note_modal">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New Note</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <input
+            type="text"
+            placeholder="Write here..."
+            value={newNoteBody}
+            onChange={(e) => setNewNoteBody(e.target.value)}
+            style={{ width: "465px", border: "none" }}
+          ></input>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose}>Close</Button>
+          <Button onClick={addNewNote} primary={true}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   );
 }

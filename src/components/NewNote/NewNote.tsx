@@ -11,13 +11,13 @@ export default function NewNote({ getNotes }: NewNoteProps): JSX.Element {
   const newNoteBodyManager = useState("");
 
   return (
-    <>
+    <div id="new_note">
       <NewNoteButton showManager={showManager} />
       <NewNoteModal
         newNoteBodyManager={newNoteBodyManager}
         showManager={showManager}
         getNotes={getNotes}
       />
-    </>
+    </div>
   );
 }

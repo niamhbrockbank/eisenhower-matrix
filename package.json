@@ -9,11 +9,10 @@
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
     "bootstrap": "^5.2.1",
+    "cypress": "^10.9.0",
     "holderjs": "^2.9.9",
     "react": "^17.0.2",
-    "react-beautiful-dnd": "^13.1.1",
     "react-bootstrap": "^2.5.0",
-    "react-dnd": "^16.0.1",
     "react-dom": "^17.0.2",
     "react-moveable": "^0.39.0",
     "react-p5": "^1.3.30",
@@ -30,7 +29,8 @@
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "cypress": "yarn run cypress open"
   },
   "browserslist": {
     "production": [

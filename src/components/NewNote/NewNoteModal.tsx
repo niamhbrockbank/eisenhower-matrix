@@ -19,12 +19,16 @@ export default function NewNoteModal({
   const handleClose = () => setShow(false);
 
   async function addNewNote(): Promise<void> {
-    await axios.post("https://priorities-measure.herokuapp.com/notes", {
-      note_body: newNoteBody,
-    });
-    handleClose();
-    setNewNoteBody("");
-    getNotes();
+    try {
+      await axios.post("https://priorities-measure.herokuapp.com/notes", {
+        note_body: newNoteBody,
+      });
+      handleClose();
+      setNewNoteBody("");
+      await getNotes();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

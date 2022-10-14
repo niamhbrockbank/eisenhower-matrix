@@ -31,7 +31,7 @@ export default function NoteElement({
       draggable="true"
       onDragStart={(e) => handleDragStart(e, note, setOffset)}
       onDragEnd={(e) =>
-        handleDragEnd(e, note.note_id, notesArr, setNotesArr, offset)
+        handleDragEnd(e, note.note_id, notesArr, setNotesArr, offset, getNotes)
       }
       onMouseEnter={() => {
         setDeleteButtonShown(true);
@@ -54,19 +54,17 @@ export default function NoteElement({
       {deleteButtonShown && (
         <DeleteButton
           onClick={() => {
-            deleteNote(hoverOverNoteId);
-            getNotes();
+            deleteNote(hoverOverNoteId, getNotes);
           }}
         >
           🗑️
         </DeleteButton>
       )}
-      {showNoteModal && (
-        <NoteModal
-          setShowNoteModal={setShowNoteModal}
-          noteBody={note.note_body}
-        />
-      )}
+      <NoteModal
+        setShowNoteModal={setShowNoteModal}
+        noteBody={note.note_body}
+        show={showNoteModal}
+      />
     </div>
   );
 }

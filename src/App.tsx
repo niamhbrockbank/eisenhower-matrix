@@ -16,7 +16,6 @@ function App(): JSX.Element {
       "https://priorities-measure.herokuapp.com/notes"
     );
     setNotesArr(response.data);
-    console.log('get notes called')
   }, [setNotesArr]);
 
   useEffect(() => {

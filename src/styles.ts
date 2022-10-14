@@ -50,7 +50,7 @@ export const DeleteButton = styled.button`
 `;
 
 export const NoteStyle = styled.div`
-  z-position: absolute;
+  z-position: fixed;
   z-index: 100;
 `
 

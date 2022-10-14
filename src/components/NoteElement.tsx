@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DeleteButton, NoteStyle } from "../styles";
+import { DeleteButton } from "../styles";
 import { Note, Offset } from "../types";
 import deleteNote from "../utils/deleteNote";
 import handleDragEnd from "../utils/handleDragEnd";
@@ -25,7 +25,7 @@ export default function NoteElement({
   const [showNoteModal, setShowNoteModal] = useState(false);
 
   return (
-    <NoteStyle
+    <div
       key={note.note_id}
       className="note_div"
       draggable="true"
@@ -60,12 +60,11 @@ export default function NoteElement({
           🗑️
         </DeleteButton>
       )}
-      {showNoteModal && (
         <NoteModal
           setShowNoteModal={setShowNoteModal}
           noteBody={note.note_body}
+          show={showNoteModal}
         />
-      )}
-    </NoteStyle>
+    </div>
   );
 }

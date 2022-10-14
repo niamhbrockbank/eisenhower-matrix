@@ -1,18 +1,26 @@
-import { Button, Modal, ModalBody } from "../styles";
+import { Button } from "../styles";
+import Modal from "react-bootstrap/Modal"
 
 interface NoteModalProps {
   setShowNoteModal: React.Dispatch<React.SetStateAction<boolean>>;
   noteBody: string;
+  show : boolean;
 }
 
 export default function NoteModal({
   setShowNoteModal,
   noteBody,
+  show
 }: NoteModalProps): JSX.Element {
   return (
     <>
-      <Modal>
-        <ModalBody>
+      <Modal
+      show={show}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      >
+        <Modal.Body>
           <p>{noteBody}</p>
           <Button
             onClick={() => setShowNoteModal(false)}
@@ -21,7 +29,7 @@ export default function NoteModal({
           >
             Close
           </Button>
-        </ModalBody>
+        </Modal.Body>
       </Modal>
     </>
   );

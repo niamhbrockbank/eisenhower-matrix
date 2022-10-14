@@ -36,7 +36,6 @@
 }
 
 .note_div {
-  position: relative;
   background-color: rgb(230, 223, 232);
   width: 95px;
   height: 95px;
@@ -44,5 +43,4 @@
   padding: 6px 5px;
   box-shadow: 1px 3px 3px;
   border-radius: 0px 0px 1px;
-  z-index:100;
 }

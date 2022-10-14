@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: 400px 400px;
   grid-template-rows: 400px 400px;
-  z-index:0;
+  z-index: 0;
 
   margin: 70px 20px 150px 20px;
 }
@@ -45,7 +45,7 @@
   border-radius: 0px 0px 1px;
 }
 
-.note_modal{
+.note_modal {
   width: 500px;
   height: 500px;
   background-color: rgb(230, 223, 232);

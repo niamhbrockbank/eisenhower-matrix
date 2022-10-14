@@ -25,7 +25,7 @@ function App(): JSX.Element {
   return (
     <>
       <Title />
-      <NewNote setNotesArr={setNotesArr} getNotes={getNotes}/>
+      <NewNote setNotesArr={setNotesArr} getNotes={getNotes} />
       <div id="drop_area">
         <MatrixBackground
           getNotes={getNotes}

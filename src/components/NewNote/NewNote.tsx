@@ -4,11 +4,14 @@ import NewNoteButton from "./NewNoteButton";
 import NewNoteModal from "./NewNoteModal";
 
 interface NewNoteProps {
-  setNotesArr : React.Dispatch<React.SetStateAction<Note[]>>,
-  getNotes : () => Promise<void>
+  setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>;
+  getNotes: () => Promise<void>;
 }
 
-export default function NewNote({ setNotesArr, getNotes }: NewNoteProps): JSX.Element {
+export default function NewNote({
+  setNotesArr,
+  getNotes,
+}: NewNoteProps): JSX.Element {
   const showManager = useState(false);
   const newNoteBodyManager = useState("");
 

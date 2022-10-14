@@ -52,7 +52,7 @@ export const DeleteButton = styled.button`
 export const NoteStyle = styled.div`
   z-position: fixed;
   z-index: 100;
-`
+`;
 
 export const Modal = styled.div`
   position: fixed;

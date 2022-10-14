@@ -54,17 +54,17 @@ export default function NoteElement({
       {deleteButtonShown && (
         <DeleteButton
           onClick={() => {
-            deleteNote(hoverOverNoteId, getNotes)
+            deleteNote(hoverOverNoteId, getNotes);
           }}
         >
           🗑️
         </DeleteButton>
       )}
-        <NoteModal
-          setShowNoteModal={setShowNoteModal}
-          noteBody={note.note_body}
-          show={showNoteModal}
-        />
+      <NoteModal
+        setShowNoteModal={setShowNoteModal}
+        noteBody={note.note_body}
+        show={showNoteModal}
+      />
     </div>
   );
 }

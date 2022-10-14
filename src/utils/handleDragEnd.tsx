@@ -8,13 +8,16 @@ export default function handleDragEnd(
   notesArr: Note[],
   setNotesArr: React.Dispatch<React.SetStateAction<Note[]>>,
   offset: Offset,
-  getNotes : () => Promise<void>
+  getNotes: () => Promise<void>
 ): void {
   e.preventDefault();
 
-  async function updateNoteInDB(note: Note, copyOfNotes : Note[]): Promise<void> {
+  async function updateNoteInDB(
+    note: Note,
+    copyOfNotes: Note[]
+  ): Promise<void> {
     const { note_id, note_body, position_x, position_y } = note;
-  
+
     const putRequestBody = {
       note: {
         note_id: note_id,
@@ -25,10 +28,13 @@ export default function handleDragEnd(
         },
       },
     };
-  
-    await axios.put("https://priorities-measure.herokuapp.com/notes", putRequestBody);
-    setNotesArr(copyOfNotes)
-    await getNotes()
+
+    await axios.put(
+      "https://priorities-measure.herokuapp.com/notes",
+      putRequestBody
+    );
+    setNotesArr(copyOfNotes);
+    await getNotes();
   }
 
   const { xOffset, yOffset } = offset;

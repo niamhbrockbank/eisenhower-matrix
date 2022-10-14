@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 
 export default function handleDragOver(event: MouseEvent): void {
-  // event.stopPropagation();
+  event.stopPropagation();
   event.preventDefault();
 }

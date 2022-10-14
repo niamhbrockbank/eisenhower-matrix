@@ -11,7 +11,7 @@ interface NewNoteModalProps {
 export default function NewNoteModal({
   newNoteBodyManager,
   showManager,
-  getNotes,
+  getNotes
 }: NewNoteModalProps): JSX.Element {
   const [newNoteBody, setNewNoteBody] = newNoteBodyManager;
   const [show, setShow] = showManager;
@@ -24,7 +24,7 @@ export default function NewNoteModal({
     });
     handleClose();
     setNewNoteBody("");
-    getNotes();
+    await getNotes();
   }
 
   return (

@@ -19,13 +19,12 @@ export default function MatrixBackground({
   setNotesArr,
 }: MatrixBackgroundProps): JSX.Element {
   return (
-    <div className="grid_box" onDrop={handleDrop} onDragOver={handleDragOver}>
+    <div className="grid_box" onDrop={e => handleDrop(e)} onDragOver={e => handleDragOver(e)}>
       <DoFirst />
       <Schedule />
       <Delegate />
       <ForgetAboutIt />
-
-      {notesArr.length > 1 &&
+      {
         notesArr.map((note) => (
           <NoteElement
             key={note.note_id}

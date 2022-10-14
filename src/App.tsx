@@ -16,7 +16,8 @@ function App(): JSX.Element {
       "https://priorities-measure.herokuapp.com/notes"
     );
     setNotesArr(response.data);
-  }, []);
+    console.log('get notes called')
+  }, [setNotesArr]);
 
   useEffect(() => {
     getNotes();
@@ -25,7 +26,7 @@ function App(): JSX.Element {
   return (
     <>
       <Title />
-      <NewNote getNotes={getNotes} />
+      <NewNote setNotesArr={setNotesArr} getNotes={getNotes}/>
       <div id="drop_area">
         <MatrixBackground
           getNotes={getNotes}

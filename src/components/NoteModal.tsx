@@ -22,13 +22,14 @@ export default function NoteModal({
       >
         <Modal.Body>
           <p>{noteBody}</p>
-          <Button
-            onClick={() => setShowNoteModal(false)}
-            primary={true}
-            style={{ position: "absolute", bottom: "20px", right: "30px" }}
-          >
-            Close
-          </Button>
+          <Modal.Footer>
+            <Button
+              onClick={() => setShowNoteModal(false)}
+              primary={true}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
         </Modal.Body>
       </Modal>
     </>

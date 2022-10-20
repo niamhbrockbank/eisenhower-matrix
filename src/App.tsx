@@ -1,62 +1,81 @@
 import Home from "./components/Home";
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { useState } from "react";
+import {initializeApp} from "firebase/app";
+import { 
+  getFirestore,
+  query,
+  getDocs,
+  collection,
+  where,
+  addDoc
+} from "firebase/firestore";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut
+} from "firebase/auth";
+
+import {useAuthState} from 'react-firebase-hooks/auth'
+
 import { Button } from "./styles";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAy77ZeTHxdhtcxMYUGtJuyd3-kcXY65_4",
-//   authDomain: "eisenhower-matrix-ff68c.firebaseapp.com",
-//   projectId: "eisenhower-matrix-ff68c",
-//   storageBucket: "eisenhower-matrix-ff68c.appspot.com",
-//   messagingSenderId: "1099432294725",
-//   appId: "1:1099432294725:web:fed0990ce4228eb9df262c",
-//   measurementId: "G-QT44XD4FWS",
-// };
+const app = initializeApp({
+  apiKey: "AIzaSyAy77ZeTHxdhtcxMYUGtJuyd3-kcXY65_4",
+  authDomain: "eisenhower-matrix-ff68c.firebaseapp.com",
+  projectId: "eisenhower-matrix-ff68c",
+  storageBucket: "eisenhower-matrix-ff68c.appspot.com",
+  messagingSenderId: "1099432294725",
+  appId: "1:1099432294725:web:fed0990ce4228eb9df262c"
+})
 
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-// const auth = getAuth(app);
-// const provider = new GoogleAuthProvider();
+//Reference to SDKs as global variables
+const auth = getAuth(app); //should be firebaseApp as argument
+const firestore = getFirestore(app);
 
 function App(): JSX.Element {
-  const [signedIn, setSignedIn] = useState(false);
-
-  function signUserIn() {
-    // auth.signInWithPopup(provider);
-    //auth.signOut //for sign out
-
-    setSignedIn(true);
-  }
-
-  // auth.onAuthStateChanged(user => {
-  //   if (user) {
-  //     setSignedIn(false)
-  //     //user.displayName (set to empty string if doesn't exist)
-  //   } else {
-  //     setSignedIn(true)
-  //   }
-  // })
+  const [user] = useAuthState(auth);
 
   return (
     <>
-      {signedIn ? (
+      {user ? (
         <Home />
       ) : (
-        <Button primary={true} onClick={signUserIn}>
-          Sign in with Google
-        </Button>
+        <SignIn />
       )}
     </>
   );
 }
 
 export default App;
+
+export function SignIn():JSX.Element {
+  const provider = new GoogleAuthProvider()
+
+  const signInWithGoogle = async() => {
+    try {
+      const response = await signInWithPopup(auth, provider)
+      const user = response.user
+      const q = query(collection(firestore, "users"), where("uid", "==", user.uid))
+      const docs = await getDocs(q)
+
+      if (docs.docs.length === 0){
+        await addDoc(collection(firestore, "users"), {
+          uid: user.uid,
+          name : user.displayName,
+          authProvider : "google",
+          email : user.email,
+        })
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  return (
+    <Button primary={true} onClick={signInWithGoogle}>
+          Sign in with Google
+    </Button>
+  )
+
+}

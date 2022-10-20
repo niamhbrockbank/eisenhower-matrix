@@ -8,31 +8,31 @@ import NewNote from "./NewNote/NewNote";
 import Title from "./Title";
 import { Note } from "../types";
 
-export default function Home():JSX.Element{
-    const [notesArr, setNotesArr] = useState<Note[]>([]);
+export default function Home(): JSX.Element {
+  const [notesArr, setNotesArr] = useState<Note[]>([]);
 
-    const getNotes = useCallback(async () => {
-        const response = await axios.get(
-        "https://priorities-measure.herokuapp.com/notes"
-        );
-        setNotesArr(response.data);
-    }, [setNotesArr]);
+  const getNotes = useCallback(async () => {
+    const response = await axios.get(
+      "https://priorities-measure.herokuapp.com/notes"
+    );
+    setNotesArr(response.data);
+  }, [setNotesArr]);
 
-    useEffect(() => {
-        getNotes();
-    }, [getNotes]);
+  useEffect(() => {
+    getNotes();
+  }, [getNotes]);
 
-    return (
+  return (
     <>
-        <Title />
-        <NewNote setNotesArr={setNotesArr} getNotes={getNotes} />
-        <div id="drop_area">
-            <MatrixBackground
-            getNotes={getNotes}
-            notesArr={notesArr}
-            setNotesArr={setNotesArr}
-            />
-        </div>
+      <Title />
+      <NewNote setNotesArr={setNotesArr} getNotes={getNotes} />
+      <div id="drop_area">
+        <MatrixBackground
+          getNotes={getNotes}
+          notesArr={notesArr}
+          setNotesArr={setNotesArr}
+        />
+      </div>
     </>
-    )
+  );
 }

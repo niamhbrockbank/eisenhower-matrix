@@ -47,7 +47,9 @@ export default function NewNoteModal({
           ></input>
         </Modal.Body>
         <Modal.Footer>
-          <p style={{color:'grey', fontSize: '10pt'}}>{newNoteBody.length}/100</p>
+          <p style={{ color: "grey", fontSize: "10pt" }}>
+            {newNoteBody.length}/100
+          </p>
           <Button onClick={handleClose}>Close</Button>
           <Button onClick={addNewNote} primary={true}>
             Save Changes

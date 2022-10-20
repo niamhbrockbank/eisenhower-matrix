@@ -73,7 +73,7 @@ export function SignIn():JSX.Element {
   }
 
   return (
-    <Button primary={true} onClick={signInWithGoogle}>
+    <Button primary={true} onClick={signInWithGoogle} style={{marginLeft:'40vw', marginTop:'30vh'}}>
           Sign in with Google
     </Button>
   )

@@ -2,8 +2,9 @@ import Home from "./components/Home";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
+import { Button } from "./styles";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,12 +23,35 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+//const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider()
 
 function App(): JSX.Element {
+  const [signedIn, setSignedIn] = useState(false)
+
+  function signUserIn(){
+    auth.signInWithPopup(provider);
+    //auth.signOut //for sign out
+  }
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      setSignedIn(false)
+      //user.displayName (set to empty string if doesn't exist)
+    } else {
+      setSignedIn(true)
+    }
+  })
+  
   return (
+    <>
+    {signedIn ?
     <Home />
+    :
+    <Button primary={true} onClick={signUserIn}>Sign in with Google</Button>
+    }
+    </>
   );
 }
 

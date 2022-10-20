@@ -10,6 +10,7 @@
     "babel-plugin-styled-components": "^2.0.7",
     "bootstrap": "^5.2.1",
     "cypress": "^10.9.0",
+    "firebase": "^9.12.1",
     "holderjs": "^2.9.9",
     "react": "^17.0.2",
     "react-bootstrap": "^2.5.0",

@@ -4,6 +4,7 @@ export const Button = styled.button<{
   primary?: boolean;
   newNote?: boolean;
   delete?: boolean;
+  signOut?: boolean;
 }>`
   background: transparent;
   border-radius: 3px;
@@ -36,6 +37,15 @@ export const Button = styled.button<{
       position: absolute;
       bottom: 2px;
       right: 2px;
+    `}
+
+    ${(props) =>
+    props.signOut &&
+    css`
+      position: fixed;
+      top: 15px;
+      right: 170px;
+      margin: 0.5em 1em;
     `}
 `;
 

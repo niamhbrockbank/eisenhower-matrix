@@ -11,8 +11,7 @@ import {
 import {
   GoogleAuthProvider,
   getAuth,
-  signInWithPopup,
-  signOut
+  signInWithPopup
 } from "firebase/auth";
 
 import {useAuthState} from 'react-firebase-hooks/auth'
@@ -39,7 +38,7 @@ function App(): JSX.Element {
   return (
     <>
       {user ? (
-        <Home />
+        <Home auth={auth}/>
       ) : (
         <SignIn />
       )}

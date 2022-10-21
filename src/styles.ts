@@ -40,13 +40,13 @@ export const Button = styled.button<{
     `}
 
     ${(props) =>
-      props.signOut &&
-      css`
-        position: fixed;
-        top: 15px;
-        right: 170px;
-        margin: 0.5em 1em;
-      `}
+    props.signOut &&
+    css`
+      position: fixed;
+      top: 15px;
+      right: 170px;
+      margin: 0.5em 1em;
+    `}
 `;
 
 export const DeleteButton = styled.button`

@@ -8,16 +8,13 @@ import NewNote from "./NewNote/NewNote";
 import Title from "./Title";
 import { Note } from "../types";
 import { Button } from "../styles";
-import {
-  Auth,
-  signOut
-} from "firebase/auth";
+import { Auth, signOut } from "firebase/auth";
 
-interface HomeProps{
-  auth : Auth
+interface HomeProps {
+  auth: Auth;
 }
 
-export default function Home({auth} : HomeProps): JSX.Element {
+export default function Home({ auth }: HomeProps): JSX.Element {
   const [notesArr, setNotesArr] = useState<Note[]>([]);
 
   const getNotes = useCallback(async () => {
@@ -31,15 +28,17 @@ export default function Home({auth} : HomeProps): JSX.Element {
     getNotes();
   }, [getNotes]);
 
-  async function signOutGoogle(){
-    await signOut(auth)
+  async function signOutGoogle() {
+    await signOut(auth);
   }
 
   return (
     <>
       <Title />
       <NewNote setNotesArr={setNotesArr} getNotes={getNotes} />
-      <Button signOut={true} onClick={()=>signOutGoogle()}>Sign Out</Button>
+      <Button signOut={true} onClick={() => signOutGoogle()}>
+        Sign Out
+      </Button>
       <div id="drop_area">
         <MatrixBackground
           getNotes={getNotes}

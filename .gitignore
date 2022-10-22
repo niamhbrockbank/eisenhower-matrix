@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+serviceAccount.json
+cypress.env.json
+/cypress/support/commands.ts
 
 # production
 /build

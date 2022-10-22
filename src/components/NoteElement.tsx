@@ -25,6 +25,7 @@ export default function NoteElement({
   const [showNoteModal, setShowNoteModal] = useState(false);
 
   return (
+    <li>
     <div
       key={note.note_id}
       className="note_div"
@@ -66,5 +67,6 @@ export default function NoteElement({
         show={showNoteModal}
       />
     </div>
+    </li>
   );
 }

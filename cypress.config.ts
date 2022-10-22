@@ -1,9 +1,12 @@
-import { defineConfig } from "cypress";
+import admin from 'firebase-admin';
+import { defineConfig } from 'cypress';
+import { plugin as cypressFirebasePlugin } from 'cypress-firebase';
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      cypressFirebasePlugin(on, config, admin);
+      // e2e testing node events setup code
     },
   },
 });

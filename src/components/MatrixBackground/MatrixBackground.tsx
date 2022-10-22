@@ -28,7 +28,7 @@ export default function MatrixBackground({
       <Schedule />
       <Delegate />
       <ForgetAboutIt />
-      <ul id='notes_list'>
+      <ul id="notes_list">
         {notesArr.map((note) => (
           <NoteElement
             key={note.note_id}
@@ -37,7 +37,7 @@ export default function MatrixBackground({
             setNotesArr={setNotesArr}
             getNotes={getNotes}
           />
-      ))}
+        ))}
       </ul>
     </div>
   );

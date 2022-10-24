@@ -26,13 +26,12 @@
   background-color: #cdb4db;
   color: white;
   --shadow-color: 0deg 0% 57%;
-  box-shadow: 
-    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.31),
+  box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.31),
     0.4px 0.9px 1.2px -1px hsl(var(--shadow-color) / 0.37),
     1.1px 2.2px 3px -1.9px hsl(var(--shadow-color) / 0.43);
 }
 
-#notes_list{
+#notes_list {
   list-style-type: none;
   padding-left: none;
 }
@@ -45,14 +44,13 @@
   padding: 6px 5px;
   border-radius: 0px 0px 1px;
   border-bottom-right-radius: 20px 3px;
-  border:1px solid #E8E8E8;  
+  border: 1px solid #e8e8e8;
 
   --shadow-color: 279deg 20% 43%;
-  box-shadow: 
-  0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.33),
-  0.9px 1.3px 1.9px -0.6px hsl(var(--shadow-color) / 0.38),
-  2.2px 3.1px 4.6px -1.3px hsl(var(--shadow-color) / 0.43),
-  5.1px 7.4px 10.9px -1.9px hsl(var(--shadow-color) / 0.47);
+  box-shadow: 0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.33),
+    0.9px 1.3px 1.9px -0.6px hsl(var(--shadow-color) / 0.38),
+    2.2px 3.1px 4.6px -1.3px hsl(var(--shadow-color) / 0.43),
+    5.1px 7.4px 10.9px -1.9px hsl(var(--shadow-color) / 0.47);
 }
 
 .note_modal {

@@ -5,14 +5,6 @@
   top: 0px;
 }
 
-/* #holding_zone {
-  position: fixed;
-  left: 850px;
-  top: 85px;
-  white-space: nowrap;
-  font-size: large;
-} */
-
 #drop_area {
   display: flex;
   justify-content: center;
@@ -33,6 +25,16 @@
   padding: 10px 20px;
   background-color: #cdb4db;
   color: white;
+  --shadow-color: 0deg 0% 57%;
+  box-shadow: 
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.31),
+    0.4px 0.9px 1.2px -1px hsl(var(--shadow-color) / 0.37),
+    1.1px 2.2px 3px -1.9px hsl(var(--shadow-color) / 0.43);
+}
+
+#notes_list{
+  list-style-type: none;
+  padding-left: none;
 }
 
 .note_div {
@@ -41,8 +43,10 @@
   height: 95px;
   font-size: 10pt;
   padding: 6px 5px;
-  box-shadow: 1px 3px 3px;
+  box-shadow: 1px 5px 3px #967da5;
   border-radius: 0px 0px 1px;
+  border-bottom-right-radius: 20px 3px;
+  border:1px solid #E8E8E8;  
 }
 
 .note_modal {

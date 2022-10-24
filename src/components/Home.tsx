@@ -10,6 +10,10 @@ import { Note } from "../types";
 import { Button } from "../styles";
 import { Auth, signOut } from "firebase/auth";
 
+//socket.io setup
+import io from "socket.io-client";
+const socket = io("https://priorities-measure.herokuapp.com/");
+
 interface HomeProps {
   auth: Auth;
 }
@@ -27,6 +31,15 @@ export default function Home({ auth }: HomeProps): JSX.Element {
   useEffect(() => {
     getNotes();
   }, [getNotes]);
+
+  useEffect(() => {
+    socket.on("Get all notes", (allClientsNotes) => {
+      setNotesArr(allClientsNotes);
+    });
+    return () => {
+      socket.off("Get all notes");
+    };
+  }, []);
 
   async function signOutGoogle() {
     await signOut(auth);

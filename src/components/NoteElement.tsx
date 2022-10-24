@@ -25,46 +25,55 @@ export default function NoteElement({
   const [showNoteModal, setShowNoteModal] = useState(false);
 
   return (
-    <div
-      key={note.note_id}
-      className="note_div"
-      draggable="true"
-      onDragStart={(e) => handleDragStart(e, note, setOffset)}
-      onDragEnd={(e) =>
-        handleDragEnd(e, note.note_id, notesArr, setNotesArr, offset, getNotes)
-      }
-      onMouseEnter={() => {
-        setDeleteButtonShown(true);
-        setHoverOverNoteId(note.note_id);
-      }}
-      onMouseLeave={() => {
-        setDeleteButtonShown(false);
-        setHoverOverNoteId(NaN);
-      }}
-      style={{
-        position: "absolute",
-        left: `${note.position_x}px`,
-        top: `${note.position_y}px`,
-      }}
-      onDoubleClick={() => setShowNoteModal(true)}
-    >
-      {note.note_body.length < 35
-        ? note.note_body
-        : `${note.note_body.slice(0, 30)}...`}
-      {deleteButtonShown && (
-        <DeleteButton
-          onClick={() => {
-            deleteNote(hoverOverNoteId, getNotes);
-          }}
-        >
-          🗑️
-        </DeleteButton>
-      )}
-      <NoteModal
-        setShowNoteModal={setShowNoteModal}
-        noteBody={note.note_body}
-        show={showNoteModal}
-      />
-    </div>
+    <li>
+      <div
+        key={note.note_id}
+        className="note_div"
+        draggable="true"
+        onDragStart={(e) => handleDragStart(e, note, setOffset)}
+        onDragEnd={(e) =>
+          handleDragEnd(
+            e,
+            note.note_id,
+            notesArr,
+            setNotesArr,
+            offset,
+            getNotes
+          )
+        }
+        onMouseEnter={() => {
+          setDeleteButtonShown(true);
+          setHoverOverNoteId(note.note_id);
+        }}
+        onMouseLeave={() => {
+          setDeleteButtonShown(false);
+          setHoverOverNoteId(NaN);
+        }}
+        style={{
+          position: "absolute",
+          left: `${note.position_x}px`,
+          top: `${note.position_y}px`,
+        }}
+        onDoubleClick={() => setShowNoteModal(true)}
+      >
+        {note.note_body.length < 35
+          ? note.note_body
+          : `${note.note_body.slice(0, 30)}...`}
+        {deleteButtonShown && (
+          <DeleteButton
+            onClick={() => {
+              deleteNote(hoverOverNoteId, getNotes);
+            }}
+          >
+            🗑️
+          </DeleteButton>
+        )}
+        <NoteModal
+          setShowNoteModal={setShowNoteModal}
+          noteBody={note.note_body}
+          show={showNoteModal}
+        />
+      </div>
+    </li>
   );
 }

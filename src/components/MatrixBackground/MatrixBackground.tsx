@@ -28,15 +28,17 @@ export default function MatrixBackground({
       <Schedule />
       <Delegate />
       <ForgetAboutIt />
-      {notesArr.map((note) => (
-        <NoteElement
-          key={note.note_id}
-          note={note}
-          notesArr={notesArr}
-          setNotesArr={setNotesArr}
-          getNotes={getNotes}
-        />
-      ))}
+      <ul id="notes_list">
+        {notesArr.map((note) => (
+          <NoteElement
+            key={note.note_id}
+            note={note}
+            notesArr={notesArr}
+            setNotesArr={setNotesArr}
+            getNotes={getNotes}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

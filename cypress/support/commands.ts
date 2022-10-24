@@ -35,3 +35,22 @@
 //     }
 //   }
 // }
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database';
+import 'firebase/compat/firestore';
+import { attachCustomCommands } from 'cypress-firebase';
+
+const fbConfig = {
+    apiKey: "AIzaSyAy77ZeTHxdhtcxMYUGtJuyd3-kcXY65_4",
+    authDomain: "eisenhower-matrix-ff68c.firebaseapp.com",
+    projectId: "eisenhower-matrix-ff68c",
+    storageBucket: "eisenhower-matrix-ff68c.appspot.com",
+    messagingSenderId: "1099432294725",
+    appId: "1:1099432294725:web:fed0990ce4228eb9df262c",
+};
+
+firebase.initializeApp(fbConfig);
+
+attachCustomCommands({ Cypress, cy, firebase });

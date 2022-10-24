@@ -1,4 +1,5 @@
 import Home from "./components/Home";
+import { Button } from "./styles";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -9,10 +10,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-
 import { useAuthState } from "react-firebase-hooks/auth";
-
-import { Button } from "./styles";
 
 // Your web app's Firebase configuration
 const app = initializeApp({
@@ -64,6 +62,7 @@ export function SignIn(): JSX.Element {
 
   return (
     <Button
+      id="sign_in"
       primary={true}
       onClick={signInWithGoogle}
       style={{ marginLeft: "40vw", marginTop: "30vh" }}

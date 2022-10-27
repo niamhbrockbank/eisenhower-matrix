@@ -50,8 +50,8 @@ export default function Home({ auth }: HomeProps): JSX.Element {
   return (
     <>
       <Title />
-      <NewNote setNotesArr={setNotesArr} getNotes={getNotes} />
-      <Button signOut={true} onClick={() => signOutGoogle()}>
+      <NewNote setNotesArr={setNotesArr} getNotes={getNotes}/>
+      <Button signOut={true} onClick={() => signOutGoogle()} style={{position: 'absolute', zIndex: 300}}>
         Sign Out
       </Button>
       <div

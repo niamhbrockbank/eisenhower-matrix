@@ -12,6 +12,8 @@ import { Auth, signOut } from "firebase/auth";
 
 //socket.io setup
 import io from "socket.io-client";
+import handleDrop from "../utils/handleDrop";
+import handleDragOver from "../utils/handleDragOver";
 const socket = io("https://priorities-measure.herokuapp.com/");
 
 interface HomeProps {
@@ -52,7 +54,10 @@ export default function Home({ auth }: HomeProps): JSX.Element {
       <Button signOut={true} onClick={() => signOutGoogle()}>
         Sign Out
       </Button>
-      <div id="drop_area">
+      <div id="drop_area"
+        onDrop={(e) => handleDrop(e)}
+        onDragOver={(e) => handleDragOver(e)}
+      >
         <MatrixBackground
           getNotes={getNotes}
           notesArr={notesArr}

@@ -1,3 +1,35 @@
+#sign_in_background {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  /* background-image: linear-gradient(120deg, #cdb4db, #e8e8e8); */
+  background-color: #cdb4db;
+}
+
+#sign_in_modal {
+  background-color: white;
+  position: fixed;
+  left: calc(50vw - 200px);
+  top: 20vh;
+  width: 400px;
+  height: 300px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  text-align: center;
+  --shadow-color: 300deg 20% 43%;
+  box-shadow: 0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.33),
+    0.9px 1.3px 1.9px -0.6px hsl(var(--shadow-color) / 0.38),
+    2.2px 3.1px 4.6px -1.3px hsl(var(--shadow-color) / 0.43),
+    5.1px 7.4px 10.9px -1.9px hsl(var(--shadow-color) / 0.47);
+}
+
+#sign_in {
+  margin-top: 50px;
+}
+
 #page_title {
   margin: 20px 0px 20px 40px;
   position: fixed;

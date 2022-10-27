@@ -8,7 +8,6 @@ import {
   Firestore,
 } from "firebase/firestore";
 import { Button } from "../styles";
-import Title from "./Title";
 
 interface SignInProps {
   auth: Auth;

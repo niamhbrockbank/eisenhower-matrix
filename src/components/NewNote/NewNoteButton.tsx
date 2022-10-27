@@ -12,7 +12,12 @@ export default function NewNoteButton({
 
   return (
     <>
-      <Button primary={true} newNote={true} onClick={handleShow} style={{position: 'fixed', zIndex: 300}}>
+      <Button
+        primary={true}
+        newNote={true}
+        onClick={handleShow}
+        style={{ position: "fixed", zIndex: 300 }}
+      >
         New Note
       </Button>
     </>

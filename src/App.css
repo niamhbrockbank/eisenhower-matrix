@@ -8,6 +8,9 @@
 #drop_area {
   display: flex;
   justify-content: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
 .grid_box {
@@ -41,12 +44,11 @@
   width: 95px;
   height: 95px;
   font-size: 10pt;
-  padding: 6px 5px;
+  padding: 12px 5px;
   border-radius: 0px 0px 1px;
-  border-bottom-right-radius: 20px 3px;
   border: 1px solid #e8e8e8;
 
-  --shadow-color: 279deg 20% 43%;
+  --shadow-color: 300deg 20% 43%;
   box-shadow: 0.2px 0.3px 0.4px hsl(var(--shadow-color) / 0.33),
     0.9px 1.3px 1.9px -0.6px hsl(var(--shadow-color) / 0.38),
     2.2px 3.1px 4.6px -1.3px hsl(var(--shadow-color) / 0.43),

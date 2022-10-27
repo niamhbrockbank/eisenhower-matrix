@@ -16,7 +16,7 @@ export default function handleDragEnd(
     note: Note,
     copyOfNotes: Note[]
   ): Promise<void> {
-    note.dragging = false
+    note.dragging = false;
     const { note_id, note_body, position_x, position_y } = note;
 
     const putRequestBody = {

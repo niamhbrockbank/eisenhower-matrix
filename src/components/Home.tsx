@@ -54,7 +54,8 @@ export default function Home({ auth }: HomeProps): JSX.Element {
       <Button signOut={true} onClick={() => signOutGoogle()}>
         Sign Out
       </Button>
-      <div id="drop_area"
+      <div
+        id="drop_area"
         onDrop={(e) => handleDrop(e)}
         onDragOver={(e) => handleDragOver(e)}
       >

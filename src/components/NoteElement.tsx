@@ -53,7 +53,7 @@ export default function NoteElement({
           position: "absolute",
           left: `${note.position_x}px`,
           top: `${note.position_y}px`,
-          opacity: `${note.dragging ? '0.01' : '1'}`
+          opacity: `${note.dragging ? "0.01" : "1"}`,
         }}
         onDoubleClick={() => setShowNoteModal(true)}
       >

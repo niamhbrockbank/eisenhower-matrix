@@ -1,5 +1,9 @@
-# Simplified CRA starter
+# Eisenhower Priority Matrix
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+<ul>
+  <li>Deployed front end <a href="https://priorities-measure.netlify.app/">here.</a></li>
+  <li>Backend GitHub repo <a href="https://github.com/niamhbrockbank/eisenhower-matrix-back-end">here.</a></li>
+  <li>Deployed backend <a href="https://priorities-measure.herokuapp.com/notes">here.</a></li>
+</ul>
 
-> This is part of Academy's technical curriculum for **The Mark**. All parts of that curriculum, including this project, are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>
+To install all dependencies use ```yarn```.

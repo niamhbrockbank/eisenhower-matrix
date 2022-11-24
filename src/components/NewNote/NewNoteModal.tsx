@@ -20,7 +20,7 @@ export default function NewNoteModal({
 
   async function addNewNote(): Promise<void> {
     try {
-      await axios.post("https://priorities-measure.herokuapp.com/notes", {
+      await axios.post("https://priorities-measure.onrender.com/notes", {
         note_body: newNoteBody,
       });
       handleClose();

@@ -14,7 +14,7 @@ import { Auth, signOut } from "firebase/auth";
 import io from "socket.io-client";
 import handleDrop from "../utils/handleDrop";
 import handleDragOver from "../utils/handleDragOver";
-const socket = io("https://priorities-measure.herokuapp.com/");
+const socket = io("https://priorities-measure.onrender.com/");
 
 interface HomeProps {
   auth: Auth;
@@ -25,7 +25,7 @@ export default function Home({ auth }: HomeProps): JSX.Element {
 
   const getNotes = useCallback(async () => {
     const response = await axios.get(
-      "https://priorities-measure.herokuapp.com/notes"
+      "https://priorities-measure.onrender.com/notes"
     );
     setNotesArr(response.data);
   }, [setNotesArr]);

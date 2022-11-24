@@ -31,7 +31,7 @@ export default function handleDragEnd(
     };
 
     await axios.put(
-      "https://priorities-measure.herokuapp.com/notes",
+      "https://priorities-measure.onrender.com/notes",
       putRequestBody
     );
     setNotesArr(copyOfNotes);
